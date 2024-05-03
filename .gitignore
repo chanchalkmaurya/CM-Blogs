@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+*.sqlite3
+*.db
+*.log
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# Secret key
+*.secret_key
+
+# Development-specific settings
+local_settings.py
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Compiled Python bytecode
+*.pyc
+
+# Ignore migrations, as they can be regenerated
+**/migrations/
+
+# Ignore pipenv virtual environment
+/.venv
+
+# Ignore any other virtual environments
+venv/
+env/
+ENV/
+
+# Ignore .DS_Store files on macOS
+.DS_Store
+
+# Ignore coverage reports
+htmlcov/
+
+# Ignore test database
+test_db.sqlite3
+
+# Ignore Heroku-related files
+*.heroku.ym
