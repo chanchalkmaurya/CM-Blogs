@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title> {{title}} </title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="container p-5">
+    <center> <h1> {{blog.title}}</h1> </center>
+    <center><p> Author: <font class="text-danger">{{author.username}} </font>⚫ Published date:<font class="text-danger"> {{blog.publication_date|slice:":10"}} </font></p> </center>
+    {% if is_author %}
+        <p align="right"> <a href="{% url 'edit_blog' blog.id %}" ><button class="btn btn-secondary" type="submit">Edit Blog</button></a> </p>
+    {% endif %}
+
+  <br><p> {{blog.content}} </p>
+</div>
+</div>
+{% endblock content %}

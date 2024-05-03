@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title> {{title}} </title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="container p-5">
+    <h1> Create <font class="text-danger"> Blog</font></h1> <br>
+    {{status_code}} <br>
+    {{errors}}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success" type="submit"> Publish </button>
+    </form>
+</div>
+{% endblock content %}

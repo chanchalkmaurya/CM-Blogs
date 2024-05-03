@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title> {{title}} </title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="container p-5">
+  {% if request.user.id == blog.author %}
+    <p><b><i>Editing > </i></b></p>
+    <form method="POST">
+        {% csrf_token %}
+            <div>
+              Blog Title: 
+            </div>
+          <div>
+            <input type="text" class="form-control" id="new_title" name="title" placeholder="{{blog.title}}" value="{{blog.title}}">
+          </div><br>
+
+          <div>
+            Content:
+          </div>
+        <div>
+          <textarea class="form-control" id="new_content" name="content" placeholder="{{blog.content}}" rows="4" cols="200"> {{blog.content}} </textarea>
+        </div><br>
+
+          <div>
+            <button type="submit" class="btn btn-primary">Update Blog</button>
+          </div>
+      </form>
+  {% else %}
+      <h3> Access Denied </h3>
+  {% endif %}
+</div>
+{% endblock content %}

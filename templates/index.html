@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title> {{title}} </title>
+{% endblock title %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<!--responsividade-->
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+<!--owl css-->
+<link rel="stylesheet" href="{% static 'css/owl/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl/owl.theme.default.min.css' %}">
+{% endblock css %}
+
+
+
+{% block content %}
+{% for message in messages %}
+    <div class="alert alert-success alert-dismissible {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+<div class="filme-principal parallax">
+  <div class="container">
+      <h3 class="titulo">CM <font class="text-danger">Blogs </font></h3>
+      <p class="descricao"> Read blogs written by other, share your thoughts via blog.</p>
+      <p class="descricao">
+        The blog page aims to provide an engaging and informative platform where users can read, share, and interact with blog posts on various topics.
+        <br><strong style="color:green;"> READ, CREATE, UPDATE & DELETE  </strong> with <strong style="color:red;"> Blogs. </strong>.
+      </p>
+      
+
+          {% comment %} <div id="IntroductionVideo" class="IntroductionVideo">
+              <div>
+                  <a href="#fechar" title="Fechar" class="fechar">x</a>
+                  <div class="video" >
+                      <iframe width="100%" height="410" src="https://www.youtube.com/embed/nFsOtP7HgXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                          <p>Here is my Video Introduction</p> </iframe>
+                  </div>
+              </div>
+          </div> {% endcomment %}
+          
+          {% comment %} <a href="#ModalInformação"> 
+              <button role="button" class="botao">
+                  <i class="fas fa-info-circle"></i>
+                  MORE INFORMATION  <strong> Scroll Down </strong> 
+              </button>
+          </a> {% endcomment %}
+      </div>
+      <div class="vazia"></div>
+  </div>
+</div>
+
+</main>
+
+{% endblock content %}
+
+
+
+{% block javascript %}
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <script src="{% static 'js/owl/jquery.min.js' %}"></script>
+    <script src="{% static 'js/owl/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/owl/setup.js' %}"></script>
+{% endblock javascript %}

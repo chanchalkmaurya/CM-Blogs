@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title> {{title}} </title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="container fluid p-5">
+    <p align="right"> Already Registered? <a href="{% url 'login' %}"> Login </a> here. </p>
+    <h1> Let's <font class="text-danger"> Register</font> here</h1> <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit"> Register </button>
+    </form>
+</div>
+{% endblock content %}
