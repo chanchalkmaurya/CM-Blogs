@@ -1,5 +1,11 @@
 import os 
 from pathlib import Path
+import environ
+
+# include the environment variable
+env = environ.Env()
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +15,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*=^nxjf@h6d3kmlz^1(-66(si^%2ri6nf$jw%m4macvmsk@7b6'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,13 +72,13 @@ WSGI_APPLICATION = 'CMBlog.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "blogdb",
-        "USER": "root",
-        "PASSWORD": "password",
-        "HOST": "localhost",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env("DJANGO_NAME"),                      
+        'USER': env("DJANGO_USER"),
+        'PASSWORD': env("DJANGO_PASSWORD"),
+        'HOST': env("DJANGO_HOST"),
+        'PORT': env("DJANGO_PORT"),
     }
 }
 
