@@ -10,11 +10,15 @@
 <div class="container p-5">
     <center> <h1> {{blog.title}}</h1> </center>
     <center><p> Author: <font class="text-danger">{{author.username}} </font>⚫ Published date:<font class="text-danger"> {{blog.publication_date|slice:":10"}} </font></p> </center>
-    {% if is_author %}
-        <p align="right"> <a href="{% url 'edit_blog' blog.id %}" ><button class="btn btn-secondary" type="submit">Edit Blog</button></a> </p>
-    {% endif %}
 
   <br><p> {{blog.content}} </p>
 </div>
+{% if is_author %}
+<hr>
+<div align="center">
+  <a href="{% url 'edit_blog' blog.id %}" ><button class="btn btn-secondary" type="submit">Edit blog</button></a>
+  <a href="{% url 'delete_blog' blog.id %}" ><button class="btn btn-danger" type="submit">Delete blog</button></a>
+</div>
+{% endif %}
 </div>
 {% endblock content %}

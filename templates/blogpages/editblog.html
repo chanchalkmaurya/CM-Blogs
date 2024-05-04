@@ -8,8 +8,8 @@
 
 {% block content %}
 <div class="container p-5">
+  <center> <h1> Edit <font class="text-danger"> blog Page </font></h1> </center>
   {% if request.user.id == blog.author %}
-    <p><b><i>Editing > </i></b></p>
     <form method="POST">
         {% csrf_token %}
             <div>
