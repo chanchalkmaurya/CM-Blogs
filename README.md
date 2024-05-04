@@ -1,15 +1,16 @@
 # CM Blogs
 
 ## Steps to Run Project
-To run a Django project, you typically follow these steps:
+To run a Django project, you typically follow these steps: <br>
+if your are windows, Use `Git Bash` for running below 2 (creating env and git clone) commands. for other commands use `Powershell` or  `Command Prompt`<br>
+Linux User can use `terminal`.
 
 ### 1. Setup Virtual Environment (Optional but Recommended):<br>
    Create a virtual environment to isolate your project's dependencies and activate environment <br>
-   #### Windows
    ```
    pip install virtualenv
    python -m venv django-development
-   .\django-development\Scripts\activate
+   source django-development/Scripts/activate
    ```
    
 
@@ -18,21 +19,27 @@ Clone the Django project repository from a version control system like Git if it
 ```
 git clone https://github.com/chanchalkmaurya/CM-Blogs.git
 ```
-### 3. Navigate to Project Directory: <br>
-Change directory (cd) to your Django project's root directory.
-```
-cd CM-Blogs
-```
 
-### 4. Install Dependencies:
+### Windows user 
+**Run all the below commands on Powershell or 'Command Prompt'. Do not run it in `Git Bash`.**
+1. Open the `Powershell` or `Command Prompt`.
+2. Go to Projects Root Directory <br>
+![Screenshot 2024-05-05 015010](https://github.com/chanchalkmaurya/CM-Blogs/assets/73050886/84f54bba-1675-4750-8813-4f1c79e7f74d)
+
+3. activate the environment
+   ```
+   ..\django-development\Scripts\activate
+   ```
+
+### 3. Install Dependencies:
 Install project dependencies by running:
 ```
 pip install -r requirement.txt
 ```
 This command will install all dependencies listed in the requirements.txt file.
 
-### 6. Setup Environment File
-Create a `.env` file where settings.py resides.<br>
+### 4. Setup Environment File
+Create a `.env` file where settings.py resides. [if .env file is not there] <br>
 ![Screenshot 2024-05-05 010702](https://github.com/chanchalkmaurya/CM-Blogs/assets/73050886/6ae9a08a-5a26-462f-92f6-37f9d4d70f06)
 
 this files contains these environment variables:
@@ -52,23 +59,27 @@ change the environment values according to you. <br>
 4. DJANGO_HOST => `localhost` if running locally. <br>
 5. DJANGO_PORT=3306
 <br>
-### 6. Run Migrations:
+
+### 5. Run Migrations:
 Apply database migrations by running:
 ```
-python manage.py makemigrations
+python manage.py makemigrations usersApp
+python manage.py makemigrations blogApp
 python manage.py migrate
 ```
-### 7. Create Superuser (Optional):
+
+   
+### 6. Create Superuser (Optional):
 If your project includes authentication, you may want to create a superuser:
 ```
 python manage.py createsuperuser
 ```
 
-### 8. Start Development Server:
+### 7. Start Development Server:
 Run the Django development server:
 ```
 python manage.py runserver
 ```
 
-### 9. Access the Application:
+### 8. Access the Application:
 Open a web browser and navigate to the URL provided by the Django development server (usually http://127.0.0.1:8000/).
