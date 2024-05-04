@@ -11,12 +11,6 @@ To run a Django project, you typically follow these steps:
    python -m venv django-development
    .\django-development\Scripts\activate
    ```
-  #### Linux
-  ```
-  pip install virtualenv
-  python -m venv django-development
-  source django-development/bin/activate
-  ```
    
 
 ### 2. Clone Project (If necessary):<br>
