@@ -16,7 +16,9 @@
         {{ message }}
     </div>
     {% endfor %}
+
   <center> <h1> Expand Your <font class="text-danger"> Knowlege </font></h1> </center>
+  {% if blogs %}
   <div class="row row-cols-1 row-cols-sm-3 g-4 p-5">
     {% for item in blogs %}
         <div class="col p-2">
@@ -30,5 +32,8 @@
         </div>
     {% endfor %}
 </div>
+{% else %}
+<center> There isn't any blog. Become First Person to <a href="{% url 'create_blog' %}">write</a> a blog</center>
+{% endif %}
 </div>
 {% endblock content %}
