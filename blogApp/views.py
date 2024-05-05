@@ -25,7 +25,6 @@ def blog_list_view(request):
             'blogs': page_obj,
             'title': 'All blogs',
             'paginator': paginator,
-            'current_page_number': page_obj.number,
         }
 
         return render(request, 'blogpages/bloglist.html', context)
@@ -106,7 +105,11 @@ def your_blog(request):
     response = api_view(request)
     if response.status_code == 200:
         blogs = response.data
-        return render(request, 'blogpages/yourblogs.html', {'blogs': blogs, 'title':'Your Blogs'})
+        paginator = Paginator(blogs, 5)  # Show 5 blogs per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
+        return render(request, 'blogpages/yourblogs.html', {'blogs': page_obj, 'title':'Your Blogs', 'paginator': paginator})
     else:
         # Handle error response
         return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list', 'title':'Error Page'})
