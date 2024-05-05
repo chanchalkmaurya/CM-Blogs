@@ -7,18 +7,31 @@ from blogApp.models import Blog
 from blogApp.forms import BlogCreationForm
 from apis.blog_api import BlogList, BlogDetails, YourBlogs
 
+from django.core.paginator import Paginator
 
-# Regular Django views for rendering HTML templates
+# views
 def blog_list_view(request):
     api_view = BlogList.as_view()
     response = api_view(request)
-    
+
     if response.status_code == 200:
         blogs = response.data
-        return render(request, 'blogpages/bloglist.html', {'blogs': blogs, 'title':'All blogs'})
+        paginator = Paginator(blogs, 5)  # Show 5 blogs per page
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        
+        context = {
+            'blogs': page_obj,
+            'title': 'All blogs',
+            'paginator': paginator,
+            'current_page_number': page_obj.number,
+        }
+
+        return render(request, 'blogpages/bloglist.html', context)
     else:
         # Handle error response
-        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list', 'title':'Error Page'})
+        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list', 'title': 'Error Page'})
 
 def blog_detail_view(request, blog_id):
     api_view = BlogDetails.as_view()
