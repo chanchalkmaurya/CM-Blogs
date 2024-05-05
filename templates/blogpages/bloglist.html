@@ -32,6 +32,20 @@
         </div>
     {% endfor %}
 </div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item"><a class="page-link" href="?page=1" tabindex="1"><<</a></li>
+      {% if blogs.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{blogs.previous_page_number}}">{{blogs.previous_page_number}}</a></li>
+      {% endif %}
+
+      <li class="page-item"><a class="page-link" href="?page={{blogs.number}}">{{blogs.number}}</a></li>
+      
+      {% if blogs.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{blogs.next_page_number}}">{{blogs.next_page_number}}</a></li>
+      {% endif %}<li class="page-item"><a class="page-link" href="?page={{paginator.num_pages}}">>></a></li>
+    </ul>
+</nav>
 {% else %}
 <center> There isn't any blog. Become First Person to <a href="{% url 'create_blog' %}">write</a> a blog</center>
 {% endif %}
