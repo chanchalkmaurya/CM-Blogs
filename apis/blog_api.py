@@ -33,7 +33,7 @@ class BlogList(APIView):
     
 class YourBlogs(APIView):
     def get(self, request):
-        blogs = Blog.objects.filter(author=request.user.id)
+        blogs = Blog.objects.filter(author=request.user)
         serializer = BlogSerializer(blogs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
