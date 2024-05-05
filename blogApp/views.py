@@ -152,7 +152,7 @@ def your_blog(request):
             'title':'Your Blogs',
             'paginator': paginator
         }
-        return render(request, 'blogpages/yourblogs.html', )
+        return render(request, 'blogpages/yourblogs.html', context)
     else:
         # Handle error response
         # context to be passed with the template => 'blogpages/error.html'
