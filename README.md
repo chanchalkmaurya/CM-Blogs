@@ -83,3 +83,46 @@ python manage.py runserver
 
 ### 8. Access the Application:
 Open a web browser and navigate to the URL provided by the Django development server (usually http://127.0.0.1:8000/).
+<br><br><br>
+
+# if you're still stuck somewhere?
+Click to watch Video:
+https://youtu.be/zPsSqb2ojrI
+
+
+<br><br><br>
+
+# Features of this Project:
+Features of the Django Blog Application:
+
+### 1. User Registration:
+* Registration form with fields for username, email address, and password.
+* Form validation to ensure correct data entry.
+* Secure storage of user information in the database.
+
+### 2. User Login and Authentication:
+* Login page for users to enter their credentials.
+* Authentication mechanism to verify user credentials.
+* Error handling for invalid login attempts.
+* Redirect to the home page upon successful login.
+* Blog Post Creation and Editing:
+* Page to view all blogs written by the logged-in user.
+### 3. Form for creating and editing blog posts.
+* Form fields for title, content, and author of the blog post.
+* Validation of form data before saving to the database.
+### 4. Blog Post Listing:
+* Page displaying a list of all blog posts.
+* Each post includes title, content, author, and publication date.
+* Pagination for long lists of blog posts to improve usability.
+### 5. Authorization and Ownership:
+* Authorization checks to ensure only the owner can edit or delete a blog post.
+* Proper handling of authorization to prevent unauthorized access to blog posts.
+### 6. Readme with Installation Steps:
+* Detailed instructions on how to set up and run the project.
+* Installation steps for required dependencies.
+* Configuration steps for database and Django settings.
+
+
+
+## Demo Video
+https://youtu.be/l-TMZ6JrlrI
