@@ -15,14 +15,15 @@ def blog_list_view(request):
     
     if response.status_code == 200:
         blogs = response.data
-        return render(request, 'blogpages/bloglist.html', {'blogs': blogs})
+        return render(request, 'blogpages/bloglist.html', {'blogs': blogs, 'title':'All blogs'})
     else:
         # Handle error response
-        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list'})
+        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list', 'title':'Error Page'})
 
 def blog_detail_view(request, blog_id):
     api_view = BlogDetails.as_view()
     response = api_view(request, blog_id=blog_id)
+    
     if response.status_code == 200:
         blog = response.data
         author = User.objects.get(pk=response.data['author'])
@@ -34,12 +35,12 @@ def blog_detail_view(request, blog_id):
         return render(request, 'blogpages/blogdetail.html', {
             'blog': blog,
             'author':author,
-            'is_author': is_author
-            
+            'is_author': is_author,
+            'title': 'Blog Detail Page'
             })
     else:
         # Handle error response
-        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog details'})
+        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog details', 'title':'Error Page'})
     
     
     
@@ -60,10 +61,10 @@ def edit_blog(request, blog_id):
             return redirect('your_blog')
         
         elif status_code == 400:
-            return render(request, 'blogpages/error.html', {'error_message': 'Failed to update.'})
+            return render(request, 'blogpages/error.html', {'error_message': 'Failed to update.', 'title':'Error Page'})
         
         elif status_code == 403:
-            return render(request, 'blogpages/error.html', {'error_message': 'Access Denied'})
+            return render(request, 'blogpages/error.html', {'error_message': 'Access Denied', 'title':'Error Page'})
             
     return render(request, 'blogpages/editblog.html', context)
     
@@ -81,7 +82,7 @@ def create_blog(request):
     form = BlogCreationForm()
     context = {
         'form': form,
-        # 'status_code':response.status_code,
+        'title':'Create Blog'
     }
     return render(request, 'blogpages/createblog.html', context)
 
@@ -92,10 +93,10 @@ def your_blog(request):
     response = api_view(request)
     if response.status_code == 200:
         blogs = response.data
-        return render(request, 'blogpages/yourblogs.html', {'blogs': blogs})
+        return render(request, 'blogpages/yourblogs.html', {'blogs': blogs, 'title':'Your Blogs'})
     else:
         # Handle error response
-        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list'})
+        return render(request, 'blogpages/error.html', {'error_message': 'Failed to fetch blog list', 'title':'Error Page'})
     
     
 def delete_blog(request, blog_id):
@@ -107,4 +108,4 @@ def delete_blog(request, blog_id):
         return redirect('your_blog')
     
     else:
-        return render(request, 'blogpages/error.html', {'error_message': 'Access Denied'})
+        return render(request, 'blogpages/error.html', {'error_message': 'Access Denied', 'title':'Error Page'})
